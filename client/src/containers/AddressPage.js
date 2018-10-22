@@ -156,7 +156,6 @@ export default class AddressPage extends Component {
           />
           <DetailView
             addr={this.state.detailAddr}
-            portfolioSize={this.state.assocAddrs.length}
             mobileShow={this.state.detailMobileSlide}
             userAddr={this.state.userAddr}
             onCloseDetail={this.handleCloseDetail}

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Helpers from 'util/helpers';
 
 import Loader from 'components/Loader';
-import LegalFooter from 'components/LegalFooter';
 import APIClient from 'components/APIClient';
 
 import 'styles/PropertiesSummary.css';
@@ -45,8 +44,7 @@ export default class PropertiesSummary extends Component {
     let agg = this.state.agg;
 
     return (
-      <div className="Page">
-        <div className="PropertiesSummary Page__content">
+        <div className="PropertiesSummary">
           { !this.state.agg ? (
             <Loader loading={true} classNames="Loader-map">Loading</Loader>
           ) : (
@@ -109,15 +107,9 @@ export default class PropertiesSummary extends Component {
                 )}
                 , which has lost <b>{agg.rslossaddr && Math.abs(parseInt(agg.rslossaddr.rsdiff, 10))}</b> units in the past 10 years.
               </p>
-              <p> 
-                <em>Need more data on this portfolio?</em> 
-                <a href="mailto:hello@justfix.nyc?subject=Who Owns What Data Request" target="_blank" className="btn btn-datarequest btn-block data-request">Send us a data request</a>
-              </p>
             </div>
           )}
         </div>
-        <LegalFooter position="inside" />
-      </div>
     );
   }
 }
