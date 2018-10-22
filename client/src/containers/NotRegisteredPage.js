@@ -18,6 +18,8 @@ export default class NotRegisteredPage extends Component {
     const geoclient = this.props.location.state.geoclient;
     const searchAddress = this.props.location.state.searchAddress;
 
+    const bblDash = <span className="unselectable" unselectable="on">-</span>;
+
     let boro, block, lot;
     let buildingTypeMessage;
 
@@ -71,7 +73,7 @@ export default class NotRegisteredPage extends Component {
             )}!
           </h5>
           <h6 className="mt-10 text-center text-bold text-large">
-          { geoclient && geoclient.bbl ? (<span>Boro-Block-Lot (BBL): <a href={"https://zola.planning.nyc.gov/lot/"+boro + "/" + block + "/" + lot} target="_blank">{boro + "-" + block + "-" + lot}</a></span>):(<span></span>) }
+          { geoclient && geoclient.bbl ? (<span>Boro-Block-Lot (BBL): <a href={"https://zola.planning.nyc.gov/lot/"+boro + "/" + block + "/" + lot} target="_blank">{boro}{bblDash}{block}{bblDash}{lot}</a></span>):(<span></span>) }
           </h6>
           { geoclient && geoclient.latitude && geoclient.longitude &&
             <img src={`https://maps.googleapis.com/maps/api/streetview?size=800x200&location=${geoclient.latitude},${geoclient.longitude}&key=AIzaSyCJKZm-rRtfREo2o-GNC-feqpbSvfHNB5s`}
