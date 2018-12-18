@@ -4,6 +4,8 @@ import Modal from 'components/Modal';
 import LegalFooter from 'components/LegalFooter';
 import Helpers from 'util/helpers';
 
+import nycha_bbls from 'data/nycha_bbls.js';
+
 import 'styles/NotRegisteredPage.css';
 
 export default class NotRegisteredPage extends Component {
@@ -65,15 +67,22 @@ export default class NotRegisteredPage extends Component {
         <div className="HomePage__content">
           <div className="HomePage__search">
             <h5 className="mt-10 text-danger text-center text-bold text-large">
-              No results found
-              {searchAddress.formatted_address ? (
-                 <span> for {searchAddress.formatted_address}</span>
-              ) : searchAddress.housenumber ? (
-                <span> for {searchAddress.housenumber} {searchAddress.streetname}</span>
-              ) : (
-                <span></span>
-              )}!
+              {(Helpers.getNychaDevelopment(geoclient.bbl,nycha_bbls) ? <span>This is a Nycha Address</span> : <span>No results found
+                {searchAddress.formatted_address ? (
+                   <span> for {searchAddress.formatted_address}</span>
+                ) : searchAddress.housenumber ? (
+                  <span> for {searchAddress.housenumber} {searchAddress.streetname}</span>
+                ) : (
+                  <span></span>
+                )}
+              </span>)}!
             </h5>
+            <h6> 
+              
+            </h6>
+            <h6 className="mt-10 text-center text-bold text-large">
+              { Helpers.getNychaDevelopment(geoclient.bbl,nycha_bbls) ? (<span>Development: {Helpers.getNychaDevelopment(geoclient.bbl,nycha_bbls)}</span>):(<span></span>) }
+            </h6>
             <h6 className="mt-10 text-center text-bold text-large">
               { geoclient && geoclient.bbl ? (<span>Boro-Block-Lot (BBL): <a href={"https://zola.planning.nyc.gov/lot/"+boro + "/" + block + "/" + lot} target="_blank">{boro}{bblDash}{block}{bblDash}{lot}</a></span>):(<span></span>) }
             </h6>

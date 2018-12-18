@@ -34,6 +34,13 @@ export default {
     return _pickBy(a, function(v, k) {
     	return b[k] === v;
     });
-  }
+  },
+
+  getNychaDevelopment(bbl,nycha_bbls) {
+    for (var index = 0; index < nycha_bbls.length; index++ ) {
+     if(nycha_bbls[index].bbl == bbl) return nycha_bbls[index].development;
+   }
+   return null;
+  } 
 
 };
